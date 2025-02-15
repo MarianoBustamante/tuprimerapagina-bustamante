@@ -1,0 +1,29 @@
+{% extends 'diario/base.html' %}
+
+{% block title %}Buscar Entrada{% endblock %}
+
+{% block content %}
+<div class="card shadow-sm p-4">
+    <h2 class="text-center">Buscar Entrada</h2>
+    <form method="get" class="mt-3">
+        <div class="mb-3">
+            <label class="form-label">Título</label>
+            {{ form.titulo }}
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Buscar</button>
+    </form>
+
+    {% if entradas %}
+        <h3 class="mt-4">Resultados:</h3>
+        <ul class="list-group mt-2">
+            {% for entrada in entradas %}
+                <li class="list-group-item">
+                    <strong>{{ entrada.titulo }}</strong> - {{ entrada.fecha_publicacion }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="mt-4 text-muted text-center">No se encontraron entradas.</p>
+    {% endif %}
+</div>
+{% endblock %}
