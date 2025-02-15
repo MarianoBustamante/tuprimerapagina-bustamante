@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Entrada
 from .forms import EscritorForm, TemaForm, EntradaForm, BuscarEntradaForm
 
@@ -40,3 +40,7 @@ def buscar_entrada(request):
         if titulo:
             entradas = Entrada.objects.filter(titulo__icontains=titulo)
     return render(request, 'diario/buscar.html', {'form': form, 'entradas': entradas})
+
+def ver_entrada(request, pk):
+    entrada = get_object_or_404(Entrada, pk=pk)
+    return render(request, 'diario/detalle_entrada.html', {'entrada': entrada})

@@ -18,7 +18,10 @@
         <ul class="list-group mt-2">
             {% for entrada in entradas %}
                 <li class="list-group-item">
-                    <strong>{{ entrada.titulo }}</strong> - {{ entrada.fecha_publicacion }}
+                    <a href="{% url 'ver_entrada' entrada.pk %}" class="text-decoration-none">
+                        <strong>{{ entrada.titulo }}</strong>
+                    </a>
+                    <span class="text-muted"> - {{ entrada.fecha_publicacion }}</span>
                 </li>
             {% endfor %}
         </ul>

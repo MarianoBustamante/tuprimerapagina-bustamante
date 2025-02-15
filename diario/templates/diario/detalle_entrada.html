@@ -1,0 +1,18 @@
+{% extends 'diario/base.html' %}
+
+{% block title %}{{ entrada.titulo }}{% endblock %}
+
+{% block content %}
+<div class="card shadow-sm">
+    <div class="card-header bg-primary text-white">
+        <h2>{{ entrada.titulo }}</h2>
+    </div>
+    <div class="card-body">
+        <p>{{ entrada.contenido }}</p>
+    </div>
+    <div class="card-footer text-muted">
+        Publicado el: {{ entrada.fecha_publicacion }}
+    </div>
+</div>
+<a href="{% url 'buscar_entrada' %}" class="btn btn-secondary mt-3">Volver a Buscar</a>
+{% endblock %}
